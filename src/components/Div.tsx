@@ -12,7 +12,11 @@ function DivMensagem({ senha }:DivProp) {
       <p className={ senha.length >= 8 ? valido : invalido }>
         Possuir 8 ou mais caracteres
       </p>
-      <p className={ senha.length <= 16 ? valido : invalido }>
+      <p
+        className={ (senha.length >= 1
+        && senha.length <= 16)
+          ? valido : invalido }
+      >
         Possuir até 16 caracteres
       </p>
       <p className={ temLetraENumeros.test(senha) ? valido : invalido }>
