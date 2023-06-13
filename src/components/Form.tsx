@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import DivMensagem from './Div';
 
 type FormProp = {
   handleSwitch: () => void
@@ -78,6 +79,8 @@ function Form({ handleSwitch }: FormProp) {
         value={ url }
         onChange={ handleUrl }
       />
+
+      <DivMensagem senha={ senha } />
 
       <button type="submit" disabled={ !formValido }>Cadastrar</button>
 
