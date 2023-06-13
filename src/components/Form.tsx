@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 type FormProp = {
   handleSwitch: () => void
@@ -26,21 +26,60 @@ function Form({ handleSwitch }: FormProp) {
     );
   };
 
+  const handleNomeDoServico = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNomeDoServico(event.target.value);
+  };
+
+  const handleLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLogin(event.target.value);
+    validacaoForm();
+  };
+
+  const handleSenha = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSenha(event.target.value);
+    validacaoForm();
+  };
+
+  const handleUrl = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUrl(event.target.value);
+    validacaoForm();
+  };
+
   return (
     <form action="">
       <label htmlFor="NomeDoServiço">Nome do Serviço</label>
-      <input type="text" id="NomeDoServiço" />
+      <input
+        type="text"
+        id="NomeDoServiço"
+        value={ nomeDoServico }
+        onChange={ handleNomeDoServico }
+      />
 
       <label htmlFor="Login">Login</label>
-      <input type="text" id="Login" />
+      <input
+        type="text"
+        id="Login"
+        value={ login }
+        onChange={ handleLogin }
+      />
 
       <label htmlFor="Senha">Senha</label>
-      <input type="password" id="Senha" />
+      <input
+        type="password"
+        id="Senha"
+        value={ senha }
+        onChange={ handleSenha }
+      />
 
       <label htmlFor="URL">URL</label>
-      <input type="text" id="URL" />
+      <input
+        type="text"
+        id="URL"
+        value={ url }
+        onChange={ handleUrl }
+      />
 
-      <button type="submit">Cadastrar</button>
+      <button type="submit" disabled={ !formValido }>Cadastrar</button>
 
       <button type="submit" onClick={ handleSwitch }>Cancelar</button>
     </form>
