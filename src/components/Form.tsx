@@ -3,22 +3,23 @@ import DivMensagem from './Div';
 
 type FormProp = {
   handleSwitch: () => void
+  servicos: Servico[]
+  setServicos: (parametro: Servico[]) => void
 };
 
-type Servico = {
+export type Servico = {
   nome: string
   login: string
   senha: string
   url: string
 };
 
-function Form({ handleSwitch }: FormProp) {
+function Form({ handleSwitch, servicos, setServicos }: FormProp) {
   const [nomeDoServico, setNomeDoServico] = useState('');
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
   const [url, setUrl] = useState('');
   const [formValido, setFormValido] = useState(false);
-  const [servicos, setServicos] = useState<Servico[]>([]);
 
   const senhaRegexLetras = /[a-zA-Z]/;
   const senhaRegexNumeros = /[0-9]/;
@@ -62,7 +63,15 @@ function Form({ handleSwitch }: FormProp) {
       senha,
       url,
     };
+    handleSwitch();
     setServicos([...servicos, novoServico]);
+
+    // estado inicial
+    setNomeDoServico('');
+    setLogin('');
+    setSenha('');
+    setUrl('');
+    setFormValido(false);
   };
 
   return (
@@ -74,7 +83,6 @@ function Form({ handleSwitch }: FormProp) {
         value={ nomeDoServico }
         onChange={ handleNomeDoServico }
       />
-
       <label htmlFor="Login">Login</label>
       <input
         type="text"
@@ -82,7 +90,6 @@ function Form({ handleSwitch }: FormProp) {
         value={ login }
         onChange={ handleLogin }
       />
-
       <label htmlFor="Senha">Senha</label>
       <input
         type="password"
@@ -90,7 +97,6 @@ function Form({ handleSwitch }: FormProp) {
         value={ senha }
         onChange={ handleSenha }
       />
-
       <label htmlFor="URL">URL</label>
       <input
         type="text"
@@ -98,11 +104,8 @@ function Form({ handleSwitch }: FormProp) {
         value={ url }
         onChange={ handleUrl }
       />
-
       <DivMensagem senha={ senha } />
-
       <button type="submit" disabled={ !formValido }>Cadastrar</button>
-
       <button type="submit" onClick={ handleSwitch }>Cancelar</button>
     </form>
   );
