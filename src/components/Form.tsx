@@ -7,6 +7,7 @@ type FormProp = {
 
 type Servico = {
   nome: string
+  login: string
   senha: string
   url: string
 };
@@ -55,10 +56,14 @@ function Form({ handleSwitch }: FormProp) {
 
   const handleCadastrar = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
+    setServicos({
+      nome:nomeDoServico,
+      login: login,
+    });
   };
 
   return (
-    <form action="">
+    <form>
       <label htmlFor="NomeDoServiço">Nome do Serviço</label>
       <input
         type="text"
