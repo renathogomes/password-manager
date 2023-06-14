@@ -54,16 +54,19 @@ function Form({ handleSwitch }: FormProp) {
     validacaoForm();
   };
 
-  const handleCadastrar = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCadastrar = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setServicos({
-      nome:nomeDoServico,
-      login: login,
-    });
+    const novoServico: Servico = {
+      nome: nomeDoServico,
+      login,
+      senha,
+      url,
+    };
+    setServicos([...servicos, novoServico]);
   };
 
   return (
-    <form>
+    <form onSubmit={ handleCadastrar }>
       <label htmlFor="NomeDoServiço">Nome do Serviço</label>
       <input
         type="text"
