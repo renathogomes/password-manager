@@ -5,12 +5,19 @@ type FormProp = {
   handleSwitch: () => void
 };
 
+type Servico = {
+  nome: string
+  senha: string
+  url: string
+};
+
 function Form({ handleSwitch }: FormProp) {
   const [nomeDoServico, setNomeDoServico] = useState('');
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
   const [url, setUrl] = useState('');
   const [formValido, setFormValido] = useState(false);
+  const [servicos, setServicos] = useState<Servico[]>([]);
 
   const senhaRegexLetras = /[a-zA-Z]/;
   const senhaRegexNumeros = /[0-9]/;
@@ -44,6 +51,10 @@ function Form({ handleSwitch }: FormProp) {
   const handleUrl = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUrl(event.target.value);
     validacaoForm();
+  };
+
+  const handleCadastrar = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
   };
 
   return (
