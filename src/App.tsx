@@ -10,9 +10,26 @@ function App() {
     setFormSwitch(!formSwitch);
   };
 
+  const removeServicos = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const { id } = event.target as HTMLButtonElement;
+    const elementoResgatado = servicos.slice(Number(id), Number(id + 1));
+    const novoServico = servicos.filter((servico) => servico !== elementoResgatado[0]);
+    setServicos(novoServico);
+  };
+
+  const [checked, setChecked] = useState(false);
+
   return (
     <div>
       <h1>Gerenciador de Senhas</h1>
+      <label htmlFor="checkbox">
+        Esconder senhas
+        <input
+          id="checkbox"
+          onChange={ () => setChecked(!checked) }
+          type="checkbox"
+        />
+      </label>
       {
         formSwitch ? <Form
           handleSwitch={ handleSwitch }
@@ -26,13 +43,20 @@ function App() {
           ? <p>Nenhuma senha cadastrada</p>
           : (
             <ul>
-              {servicos.map((servico) => (
+              {servicos.map((servico, index) => (
                 <li key={ servico.nome }>
                   <a href={ servico.url }>
                     {servico.nome}
                   </a>
                   <p>{ servico.login }</p>
-                  <p>{ servico.senha }</p>
+                  {checked ? '******' : <p>{ servico.senha }</p>}
+                  <button
+                    id={ index.toString() }
+                    onClick={ (e) => removeServicos(e) }
+                    data-testid="remove-btn"
+                  >
+                    Remove
+                  </button>
                 </li>
               ))}
             </ul>)}

@@ -36,6 +36,14 @@ function Form({ handleSwitch, servicos, setServicos }: FormProp) {
     );
   };
 
+  const estadoInicial = () => {
+    setNomeDoServico('');
+    setLogin('');
+    setSenha('');
+    setUrl('');
+    setFormValido(false);
+  };
+
   const handleNomeDoServico = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNomeDoServico(event.target.value);
   };
@@ -66,12 +74,7 @@ function Form({ handleSwitch, servicos, setServicos }: FormProp) {
     handleSwitch();
     setServicos([...servicos, novoServico]);
 
-    // estado inicial
-    setNomeDoServico('');
-    setLogin('');
-    setSenha('');
-    setUrl('');
-    setFormValido(false);
+    estadoInicial();
   };
 
   return (
