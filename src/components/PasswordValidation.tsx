@@ -1,3 +1,5 @@
+import styles from './PasswordValidation.module.css';
+
 type PasswordValidationProp = {
   password: string;
 };
@@ -10,20 +12,29 @@ function PasswordValidation({ password }: PasswordValidationProp) {
 
   return (
     <div>
-      <p className={ password.length >= 8 ? available : unavailable }>
+      <p className={ password.length >= 8 ? styles[available] : styles[unavailable] }>
         Possuir 8 ou mais caracteres
       </p>
       <p
         className={
-          password.length >= 1 && password.length <= 16 ? available : unavailable
+          password.length >= 1
+          && password.length <= 16 ? styles[available] : styles[unavailable]
         }
       >
         Possuir até 16 caracteres
       </p>
-      <p className={ hasLettersAndNumbers.test(password) ? available : unavailable }>
+      <p
+        className={ hasLettersAndNumbers.test(password)
+          ? styles[available]
+          : styles[unavailable] }
+      >
         Possuir letras e números
       </p>
-      <p className={ hasSymbols.test(password) ? available : unavailable }>
+      <p
+        className={ hasSymbols.test(password)
+          ? styles[available]
+          : styles[unavailable] }
+      >
         Possuir algum caractere especial
       </p>
     </div>
