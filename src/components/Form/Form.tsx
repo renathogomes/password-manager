@@ -1,77 +1,80 @@
 import React, { useState } from 'react';
-// import DivMensagem from './DivMensagem';
+import DivMensagem from '../Div';
 import { FormProps, Service } from '../../types';
 
 function Form({ handleSwitch, service, setService }: FormProps) {
-  const [nameService, setNameService] = useState('');
+  const [serviceName, setServiceName] = useState('');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [url, setUrl] = useState('');
-  const [formValido, setFormValido] = useState(false);
+  const [formValid, setFormValid] = useState(false);
 
-  // const passwordRegexLetras = /[a-zA-Z]/;
-  // const passwordRegexNumeros = /[0-9]/;
-  // const passwordRegexSimbolos = /[!@#$%¨&*()|{}<>,]/;
+  const passwordRegexLetras = /[a-zA-Z]/;
+  const passwordRegexNumeros = /[0-9]/;
+  const passwordRegexSimbolos = /[!@#$%¨&*()|{}<>,]/;
 
-  // const validacaoForm = () => {
-  //   setFormValido(
-  //     nameService !== '' &&
-  //     login !== '' &&
-  //     password !== '' &&
-  //     password.length >= 8 &&
-  //     password.length <= 16 &&
-  //     passwordRegexLetras.test(password) &&
-  //     passwordRegexNumeros.test(password) &&
-  //     passwordRegexSimbolos.test(password)
-  //   );
-  // };
+  const validacaoForm = () => {
+    setFormValid(
+      serviceName !== ''
+      && login !== ''
+      && password !== ''
+      && password.length >= 8
+      && password.length <= 16
+      && passwordRegexLetras.test(password)
+      && passwordRegexNumeros.test(password)
+      && passwordRegexSimbolos.test(password),
+    );
+  };
 
-  const estadoInicial = () => {
-    setNameService('');
+  const initialState = () => {
+    setServiceName('');
     setLogin('');
     setPassword('');
     setUrl('');
-    setFormValido(false);
+    setFormValid(false);
   };
 
-  const handlenameService = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNameService(event.target.value);
+  const handleServiceName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setServiceName(event.target.value);
   };
 
   const handleLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLogin(event.target.value);
+    validacaoForm();
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
+    validacaoForm();
   };
 
   const handleUrl = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUrl(event.target.value);
+    validacaoForm();
   };
 
-  const handleCadastrar = (event: React.ChangeEvent<HTMLFormElement>) => {
+  const handleRegister = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const novoServico: Service = {
-      name: nameService,
+    const newService: Service = {
+      name: serviceName,
       login,
       password,
       url,
     };
     handleSwitch();
-    setService([...service, novoServico]);
+    setService([...service, newService]);
 
-    estadoInicial();
+    initialState();
   };
 
   return (
-    <form onSubmit={ handleCadastrar }>
-      <label htmlFor="NomeDoServiço">Nome do Serviço</label>
+    <form onSubmit={ handleRegister }>
+      <label htmlFor="serviceName">Nome do Serviço</label>
       <input
         type="text"
-        id="NomeDoServiço"
-        value={ nameService }
-        onChange={ handlenameService }
+        id="serviceName"
+        value={ serviceName }
+        onChange={ handleServiceName }
       />
       <label htmlFor="Login">Login</label>
       <input
@@ -80,7 +83,7 @@ function Form({ handleSwitch, service, setService }: FormProps) {
         value={ login }
         onChange={ handleLogin }
       />
-      <label htmlFor="password">password</label>
+      <label htmlFor="password">Senha</label>
       <input
         type="password"
         id="password"
@@ -94,11 +97,14 @@ function Form({ handleSwitch, service, setService }: FormProps) {
         value={ url }
         onChange={ handleUrl }
       />
-      {/* <DivMensagem password={ password } /> */}
-      <button type="submit" disabled={ !formValido }>Cadastrar</button>
-      <button type="submit" onClick={ handleSwitch }>Cancelar</button>
+      <DivMensagem password={ password } />
+      <button type="submit" disabled={ !formValid }>
+        Cadastrar
+      </button>
+      <button type="button" onClick={ handleSwitch }>
+        Cancelar
+      </button>
     </form>
   );
 }
-
 export default Form;
