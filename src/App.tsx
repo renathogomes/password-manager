@@ -29,14 +29,19 @@ function App() {
   return (
     <div>
       <h1>Gerenciador de Senhas</h1>
-      <label htmlFor="checkbox">
-        Esconder senhas
-        <input
-          id="checkbox"
-          onChange={ () => setChecked(!checked) }
-          type="checkbox"
-        />
-      </label>
+      {
+      service.length > 0
+      && (
+        <label htmlFor="checkbox">
+          Esconder senhas
+          <input
+            id="checkbox"
+            onChange={ () => setChecked(!checked) }
+            type="checkbox"
+          />
+        </label>
+      )
+      }
       {formSwitch ? (
         <Form
           handleSwitch={ handleSwitch }
