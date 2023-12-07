@@ -1,19 +1,27 @@
-import { useState } from 'react';
-import './App.css';
-import Form, { Servico } from './components/Form';
+import React, { useState } from 'react';
+import Form from './components/Form/Form';
+// import DivMensagem from './DivMensagem/DivMensagem';
+import { Service } from './types';
 
 function App() {
   const [formSwitch, setFormSwitch] = useState(false);
-  const [servicos, setServicos] = useState<Servico[]>([]);
+  const [service, setServicos] = useState<Service[]>([]);
 
   const handleSwitch = () => {
     setFormSwitch(!formSwitch);
   };
 
-  const removeServicos = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const removeServicos = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
     const { id } = event.target as HTMLButtonElement;
-    const elementoResgatado = servicos.slice(Number(id), Number(id + 1));
-    const novoServico = servicos.filter((servico) => servico !== elementoResgatado[0]);
+    const elementoResgatado = service.slice(
+      Number(id),
+      Number(id + 1),
+    );
+    const novoServico = service.filter(
+      (servico) => servico !== elementoResgatado[0],
+    );
     setServicos(novoServico);
   };
 
@@ -33,17 +41,17 @@ function App() {
       {
         formSwitch ? <Form
           handleSwitch={ handleSwitch }
-          servicos={ servicos }
-          setServicos={ setServicos }
+          service={ service }
+          setService={ setServicos }
         />
           : <button onClick={ handleSwitch }>Cadastrar nova senha</button>
       }
       <div>
-        { servicos.length === 0
+        { service.length === 0
           ? <p>Nenhuma senha cadastrada</p>
           : (
             <ul>
-              {servicos.map((servico, index) => (
+              {service.map((servico, index) => (
                 <li key={ servico.nome }>
                   <a href={ servico.url }>
                     {servico.nome}
