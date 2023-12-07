@@ -1,32 +1,33 @@
 type DivProp = {
-  senha: string
+  password: string;
 };
 
-function DivMensagem({ senha }:DivProp) {
-  const valido = 'valid-password-check';
-  const invalido = 'invalid-password-check';
-  const temLetraENumeros = /[a-zA-Z0-9][0-9]/;
-  const temSimbolos = /[!@#$%¨&*()|{}<>,]/;
+function Div({ password }: DivProp) {
+  const available = 'valid-password-check';
+  const unavailable = 'invalid-password-check';
+  const hasLettersAndNumbers = /[a-zA-Z0-9][0-9]/;
+  const hasSymbols = /[!@#$%¨&*()|{}<>,]/;
+
   return (
     <div>
-      <p className={ senha.length >= 8 ? valido : invalido }>
+      <p className={ password.length >= 8 ? available : unavailable }>
         Possuir 8 ou mais caracteres
       </p>
       <p
-        className={ (senha.length >= 1
-        && senha.length <= 16)
-          ? valido : invalido }
+        className={
+          password.length >= 1 && password.length <= 16 ? available : unavailable
+        }
       >
         Possuir até 16 caracteres
       </p>
-      <p className={ temLetraENumeros.test(senha) ? valido : invalido }>
+      <p className={ hasLettersAndNumbers.test(password) ? available : unavailable }>
         Possuir letras e números
       </p>
-      <p className={ temSimbolos.test(senha) ? valido : invalido }>
+      <p className={ hasSymbols.test(password) ? available : unavailable }>
         Possuir algum caractere especial
       </p>
     </div>
   );
 }
 
-export default DivMensagem;
+export default Div;

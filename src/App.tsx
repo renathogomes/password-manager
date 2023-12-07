@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import Form from './components/Form/Form';
-// import DivMensagem from './DivMensagem/DivMensagem';
 import { Service } from './types';
 
 function App() {
   const [formSwitch, setFormSwitch] = useState(false);
-  const [service, setServicos] = useState<Service[]>([]);
+  const [service, setService] = useState<Service[]>([]);
 
   const handleSwitch = () => {
     setFormSwitch(!formSwitch);
@@ -20,9 +19,9 @@ function App() {
       Number(id + 1),
     );
     const novoServico = service.filter(
-      (servico) => servico !== elementoResgatado[0],
+      (sv) => sv !== elementoResgatado[0],
     );
-    setServicos(novoServico);
+    setService(novoServico);
   };
 
   const [checked, setChecked] = useState(false);
@@ -38,37 +37,36 @@ function App() {
           type="checkbox"
         />
       </label>
-      {
-        formSwitch ? <Form
+      {formSwitch ? (
+        <Form
           handleSwitch={ handleSwitch }
           service={ service }
-          setService={ setServicos }
+          setService={ setService }
         />
-          : <button onClick={ handleSwitch }>Cadastrar nova senha</button>
-      }
+      ) : (
+        <button onClick={ handleSwitch }>Cadastrar nova senha</button>
+      )}
       <div>
-        { service.length === 0
-          ? <p>Nenhuma senha cadastrada</p>
-          : (
-            <ul>
-              {service.map((servico, index) => (
-                <li key={ servico.nome }>
-                  <a href={ servico.url }>
-                    {servico.nome}
-                  </a>
-                  <p>{ servico.login }</p>
-                  {checked ? '******' : <p>{ servico.senha }</p>}
-                  <button
-                    id={ index.toString() }
-                    onClick={ (e) => removeServicos(e) }
-                    data-testid="remove-btn"
-                  >
-                    Remove
-                  </button>
-                </li>
-              ))}
-            </ul>)}
-
+        {service.length === 0 ? (
+          <p>Nenhuma senha cadastrada</p>
+        ) : (
+          <ul>
+            {service.map((servic, index) => (
+              <li key={ servic.name }>
+                <a href={ servic.url }>{servic.name}</a>
+                <p>{servic.login}</p>
+                {checked ? '******' : <p>{servic.password}</p>}
+                <button
+                  id={ index.toString() }
+                  onClick={ (e) => removeServicos(e) }
+                  data-testid="remove-btn"
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
