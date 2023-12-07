@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DivMensagem from '../Div';
+import PasswordValidation from '../PasswordValidation';
 import { FormProps, Service } from '../../types';
 
 function Form({ handleSwitch, service, setService }: FormProps) {
@@ -97,7 +97,7 @@ function Form({ handleSwitch, service, setService }: FormProps) {
         value={ url }
         onChange={ handleUrl }
       />
-      <DivMensagem password={ password } />
+      <PasswordValidation password={ password } />
       <button type="submit" disabled={ !formValid }>
         Cadastrar
       </button>

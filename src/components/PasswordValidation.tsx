@@ -1,8 +1,8 @@
-type DivProp = {
+type PasswordValidationProp = {
   password: string;
 };
 
-function Div({ password }: DivProp) {
+function PasswordValidation({ password }: PasswordValidationProp) {
   const available = 'valid-password-check';
   const unavailable = 'invalid-password-check';
   const hasLettersAndNumbers = /[a-zA-Z0-9][0-9]/;
@@ -30,4 +30,4 @@ function Div({ password }: DivProp) {
   );
 }
 
-export default Div;
+export default PasswordValidation;
