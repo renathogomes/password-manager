@@ -3,6 +3,5 @@
     color: var(--white-color);
     background-color: var(--secondary-color);
     padding: 1rem;
-    padding-inline: 12rem;
-    margin-top: 3rem;
+    padding-inline: 9rem;
 }

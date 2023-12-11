@@ -5,13 +5,13 @@
     min-width: 400px;
     padding: 20px;
     border-radius: 20px;
-    font-weight: bolder;
     color: var(--white-color);
 }
 
 .btns{
     display: flex;
     justify-content: space-between;
+    margin-inline: 3rem;
 }
 
 .btn, .btn2, .btnDisabled {
@@ -42,4 +42,5 @@ input {
     border: none;
     background-color: rgb(191, 205, 190);
     margin: 4px;
+    margin-bottom: 15px;
 }

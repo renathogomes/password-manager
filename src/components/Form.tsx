@@ -11,20 +11,22 @@ function Form({ handleSwitch, service, setService }: FormProps) {
   const [url, setUrl] = useState('');
   const [formValid, setFormValid] = useState(false);
 
-  const passwordRegexLetras = /[a-zA-Z]/;
-  const passwordRegexNumeros = /[0-9]/;
-  const passwordRegexSimbolos = /[!@#$%¨&*()|{}<>,]/;
+  const passwordRegexLetter = /[a-zA-Z]/;
+  const passwordRegexNumber = /[0-9]/;
+  const passwordRegexSymbols = /[!@#$%¨&*()|{}<>,]/;
 
   const validacaoForm = () => {
     setFormValid(
       serviceName !== ''
       && login !== ''
       && password !== ''
-      && password.length >= 8
+      && (
+        password.length >= 7
       && password.length <= 16
-      && passwordRegexLetras.test(password)
-      && passwordRegexNumeros.test(password)
-      && passwordRegexSimbolos.test(password),
+      && passwordRegexLetter.test(password)
+      && passwordRegexNumber.test(password)
+      && passwordRegexSymbols.test(password)
+      ),
     );
   };
 

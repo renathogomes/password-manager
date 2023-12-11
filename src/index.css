@@ -3,6 +3,7 @@
 
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Libre Franklin', sans-serif;
   -webkit-font-smoothing: antialiased; /*ativa a suavização de fontes, que pode fazer o texto parecer mais nítido e mais limpo, em navegadores como Chrome e Safari*/
   -moz-osx-font-smoothing: grayscale; /*ativa a suavização de fontes, que pode fazer o texto parecer mais nítido e mais limpo, no firefox do MacOS*/
