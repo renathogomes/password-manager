@@ -114,7 +114,7 @@ function Form({ handleSwitch, service, setService }: FormProps) {
           <button
             type="submit"
             disabled={ !formValid }
-            className={ styles.btn }
+            className={ !formValid ? styles.btnDisabled : styles.btn }
           >
             Cadastrar
           </button>

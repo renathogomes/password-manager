@@ -9,7 +9,8 @@ type PasswordValidationProp = {
 function PasswordValidation({ password }: PasswordValidationProp) {
   const available = 'valid-password-check';
   const unavailable = 'invalid-password-check';
-  const hasLettersAndNumbers = /[a-zA-Z0-9][0-9]/;
+  const hasNumbers = /[a-zA-Z0-9][0-9]/;
+  const hasLetters = /[a-zA-Z0-9][a-zA-Z]/;
   const hasSymbols = /[!@#$%¨&*()|{}<>,]/;
 
   return (
@@ -33,7 +34,7 @@ function PasswordValidation({ password }: PasswordValidationProp) {
           Possuir até 16 caracteres
         </p>
         <p
-          className={ hasLettersAndNumbers.test(password)
+          className={ hasNumbers.test(password) && hasLetters.test(password)
             ? styles[available]
             : styles[unavailable] }
         >
