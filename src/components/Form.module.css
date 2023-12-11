@@ -31,6 +31,14 @@
 
 }
 
+.btn2:hover {
+    background: rgb(170, 1, 1);
+}
+
+.btn:hover {
+    background: var(--tertiary-color);
+}
+
 .btnDisabled {
     background: gray;
     cursor: not-allowed;

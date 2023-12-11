@@ -6,3 +6,7 @@
     color: var(--white-color);
     margin-top: 1rem;
 }
+
+.btn:hover {
+    background-color: var(--tertiary-color);
+}
