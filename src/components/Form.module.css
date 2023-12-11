@@ -1,0 +1,28 @@
+.frm {
+    border: 1px solid #ccc;
+    background: var(--secondary-color);
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.btn {
+    background: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn2 {
+    background: red;
+    color: var(--white-color);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}

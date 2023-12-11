@@ -1,5 +1,7 @@
 import styles from './PasswordValidation.module.css';
 
+import '../App.css';
+
 type PasswordValidationProp = {
   password: string;
 };

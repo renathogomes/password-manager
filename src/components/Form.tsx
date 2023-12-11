@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PasswordValidation from './PasswordValidation';
 import { FormProps, Service } from '../types';
 
+import styles from './Form.module.css';
+
 function Form({ handleSwitch, service, setService }: FormProps) {
   const [serviceName, setServiceName] = useState('');
   const [login, setLogin] = useState('');
@@ -68,43 +70,56 @@ function Form({ handleSwitch, service, setService }: FormProps) {
   };
 
   return (
-    <form onSubmit={ handleRegister }>
-      <label htmlFor="serviceName">Nome do Serviço</label>
-      <input
-        type="text"
-        id="serviceName"
-        value={ serviceName }
-        onChange={ handleServiceName }
-      />
-      <label htmlFor="Login">Login</label>
-      <input
-        type="text"
-        id="Login"
-        value={ login }
-        onChange={ handleLogin }
-      />
-      <label htmlFor="password">Senha</label>
-      <input
-        type="password"
-        id="password"
-        value={ password }
-        onChange={ handlePassword }
-      />
-      <label htmlFor="URL">URL</label>
-      <input
-        type="text"
-        id="URL"
-        value={ url }
-        onChange={ handleUrl }
-      />
+    <>
+      <form
+        onSubmit={ handleRegister }
+        className={ styles.frm }
+      >
+        <label htmlFor="serviceName">Nome do Serviço</label>
+        <input
+          type="text"
+          id="serviceName"
+          value={ serviceName }
+          onChange={ handleServiceName }
+        />
+        <label htmlFor="Login">Login</label>
+        <input
+          type="text"
+          id="Login"
+          value={ login }
+          onChange={ handleLogin }
+        />
+        <label htmlFor="password">Senha</label>
+        <input
+          type="password"
+          id="password"
+          value={ password }
+          onChange={ handlePassword }
+        />
+        <label htmlFor="URL">URL</label>
+        <input
+          type="text"
+          id="URL"
+          value={ url }
+          onChange={ handleUrl }
+        />
+        <button
+          type="submit"
+          disabled={ !formValid }
+          className={ styles.btn }
+        >
+          Cadastrar
+        </button>
+        <button
+          type="button"
+          onClick={ handleSwitch }
+          className={ styles.btn2 }
+        >
+          Cancelar
+        </button>
+      </form>
       <PasswordValidation password={ password } />
-      <button type="submit" disabled={ !formValid }>
-        Cadastrar
-      </button>
-      <button type="button" onClick={ handleSwitch }>
-        Cancelar
-      </button>
-    </form>
+    </>
   );
 }
 export default Form;
