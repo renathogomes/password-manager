@@ -37,7 +37,10 @@ function App() {
       {
       service.length > 0
       && (
-        <label htmlFor="checkbox">
+        <label
+          htmlFor="checkbox"
+          className={ styles.btn }
+        >
           Esconder senhas
           <input
             id="checkbox"
@@ -62,9 +65,12 @@ function App() {
         {service.length === 0 ? (
           <AbsenceFrom />
         ) : (
-          <ul>
+          <ul className={ styles.list }>
             {service.map((servic, index) => (
-              <li key={ servic.name }>
+              <li
+                key={ servic.name }
+                className={ styles.regis }
+              >
                 <a href={ servic.url }>{servic.name}</a>
                 <p>{servic.login}</p>
                 {checked ? '******' : <p>{servic.password}</p>}
