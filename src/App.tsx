@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Form from './components/Form/Form';
+import Form from './components/Form';
 import { Service } from './types';
+import Header from './components/Header';
 
 function App() {
   const [formSwitch, setFormSwitch] = useState(false);
@@ -10,7 +11,7 @@ function App() {
     setFormSwitch(!formSwitch);
   };
 
-  const removeServicos = (
+  const removeServices = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     const { id } = event.target as HTMLButtonElement;
@@ -18,17 +19,17 @@ function App() {
       Number(id),
       Number(id + 1),
     );
-    const novoServico = service.filter(
+    const newService = service.filter(
       (sv) => sv !== elementoResgatado[0],
     );
-    setService(novoServico);
+    setService(newService);
   };
 
   const [checked, setChecked] = useState(false);
 
   return (
     <div>
-      <h1>Gerenciador de Senhas</h1>
+      <Header />
       {
       service.length > 0
       && (
@@ -63,7 +64,7 @@ function App() {
                 {checked ? '******' : <p>{servic.password}</p>}
                 <button
                   id={ index.toString() }
-                  onClick={ (e) => removeServicos(e) }
+                  onClick={ (e) => removeServices(e) }
                   data-testid="remove-btn"
                 >
                   Remove

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PasswordValidation from '../PasswordValidation';
-import { FormProps, Service } from '../../types';
+import PasswordValidation from './PasswordValidation';
+import { FormProps, Service } from '../types';
 
 function Form({ handleSwitch, service, setService }: FormProps) {
   const [serviceName, setServiceName] = useState('');
