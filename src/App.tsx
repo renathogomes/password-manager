@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Form from './components/Form';
 import { Service } from './types';
 import Header from './components/Header';
+import Button from './components/Button';
+import AbsenceFrom from './components/AbsenceFrom';
 
 function App() {
   const [formSwitch, setFormSwitch] = useState(false);
@@ -50,11 +52,13 @@ function App() {
           setService={ setService }
         />
       ) : (
-        <button onClick={ handleSwitch }>Cadastrar nova senha</button>
-      )}
+        <Button
+          text="Adicionar nova senha"
+          handleClick={ handleSwitch }
+        />)}
       <div>
         {service.length === 0 ? (
-          <p>Nenhuma senha cadastrada</p>
+          <AbsenceFrom />
         ) : (
           <ul>
             {service.map((servic, index) => (

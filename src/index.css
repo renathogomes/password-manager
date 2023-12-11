@@ -11,7 +11,7 @@ body {
   align-items: center;
   text-align: center;
 
-  background-color: #22252a;
+  background-color: var(--quaternary-color);
 }
 
 code {
