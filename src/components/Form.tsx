@@ -103,20 +103,22 @@ function Form({ handleSwitch, service, setService }: FormProps) {
           value={ url }
           onChange={ handleUrl }
         />
-        <button
-          type="submit"
-          disabled={ !formValid }
-          className={ styles.btn }
-        >
-          Cadastrar
-        </button>
-        <button
-          type="button"
-          onClick={ handleSwitch }
-          className={ styles.btn2 }
-        >
-          Cancelar
-        </button>
+        <div className={ styles.btns }>
+          <button
+            type="button"
+            onClick={ handleSwitch }
+            className={ styles.btn2 }
+          >
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            disabled={ !formValid }
+            className={ styles.btn }
+          >
+            Cadastrar
+          </button>
+        </div>
       </form>
       <PasswordValidation password={ password } />
     </>

@@ -1,28 +1,40 @@
 .frm {
-    border: 1px solid #ccc;
     background: var(--secondary-color);
-    max-width: 500px;
     display: flex;
     flex-direction: column;
+    min-width: 400px;
     padding: 20px;
+    border-radius: 20px;
+    font-weight: bolder;
+    color: var(--white-color);
 }
 
-.btn {
+.btns{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn, .btn2 {
     background: var(--primary-color);
     color: var(--white-color);
     border: none;
     padding: 10px;
-    border-radius: 5px;
+    padding-inline: 20px;
+    border-radius: 10px;
     cursor: pointer;
     margin-top: 10px;
+    font-weight: bolder;
 }
 
 .btn2 {
     background: red;
-    color: var(--white-color);
-    border: none;
+
+}
+
+input {
+    border-radius: 10px;
     padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
+    border: none;
+    background-color: rgb(191, 205, 190);
+    margin: 4px;
 }

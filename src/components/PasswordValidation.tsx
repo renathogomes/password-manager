@@ -1,6 +1,6 @@
 import styles from './PasswordValidation.module.css';
 
-import '../App.css';
+import '../global.css';
 
 type PasswordValidationProp = {
   password: string;
@@ -13,9 +13,14 @@ function PasswordValidation({ password }: PasswordValidationProp) {
   const hasSymbols = /[!@#$%¨&*()|{}<>,]/;
 
   return (
-    <>
-      <h2>A senha deve possuir:</h2>
-      <div>
+    <div>
+      <h4
+        className={ styles.title }
+      >
+        A senha deve possuir:
+
+      </h4>
+      <div className={ styles.bodyValidations }>
         <p className={ password.length >= 8 ? styles[available] : styles[unavailable] }>
           Possuir 8 ou mais caracteres
         </p>
@@ -42,7 +47,7 @@ function PasswordValidation({ password }: PasswordValidationProp) {
           Possuir algum caractere especial
         </p>
       </div>
-    </>
+    </div>
   );
 }
 

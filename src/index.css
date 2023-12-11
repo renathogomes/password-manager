@@ -1,15 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;300;400;800&display=swap');
+
 
 body {
   margin: 0;
   font-family: 'Libre Franklin', sans-serif;
   -webkit-font-smoothing: antialiased; /*ativa a suavização de fontes, que pode fazer o texto parecer mais nítido e mais limpo, em navegadores como Chrome e Safari*/
   -moz-osx-font-smoothing: grayscale; /*ativa a suavização de fontes, que pode fazer o texto parecer mais nítido e mais limpo, no firefox do MacOS*/
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 
   background-color: var(--quaternary-color);
 }

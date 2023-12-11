@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Button from './components/Button';
 import AbsenceFrom from './components/AbsenceFrom';
 
-import './App.css';
+import styles from './App.module.css';
 
 function App() {
   const [formSwitch, setFormSwitch] = useState(false);
@@ -32,7 +32,7 @@ function App() {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div style={ { color: 'var(--white-color)' } }>
+    <div className={ styles.disp }>
       <Header />
       {
       service.length > 0

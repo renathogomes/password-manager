@@ -1,5 +1,9 @@
 .h1Style {
+    /* border: 1px solid #ccc; */
     padding: 0.5rem;
     margin-top: 0;
     color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    font-weight: 800;
 }

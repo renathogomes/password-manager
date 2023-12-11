@@ -1,7 +1,8 @@
 .absence {
-    border: 1px solid #ccc;
     border-radius: 10px;
     color: var(--white-color);
     background-color: var(--secondary-color);
     padding: 1rem;
+    padding-inline: 12rem;
+    margin-top: 3rem;
 }
